@@ -1,3 +1,5 @@
+import os
+import utils
 from lib import feedparser
 from logger import Logger
 from source.sources import EzrssFeed
@@ -6,7 +8,7 @@ from utils import Indexer
 
 class Crawler:
   def __init__(self, list_file):
-    self.logger = Logger.get_logger(self.__class__.__name__)
+    self.logger = Logger.get_logger(utils.get_fullname(self))
     self.list_file = list_file
     self.indexer = Indexer()
     self._client = None
@@ -51,14 +53,12 @@ class Crawler:
     for feed in self.feeds_list:
       if feed.name:
         if not self.indexer.episode_exists(feed.name, feed.url):
+          save_path = os.path.join(getattr(settings, 'SAVE_DIR'),
+                                   feed.name,
+                                   feed.season)
+          self.client.start_from_url(feed.url, save_path)
           self.indexer.save(feed.name, feed.url)
       else:
         continue
 
-      import os
-      save_path = os.path.join(getattr(settings, 'SAVE_DIR'),
-                               feed.name,
-                               feed.season) 
-      self.client.start_from_url(feed.url, save_path)
-
-    self.logger.info('Finished downloading')
+    self.logger.info('Exiting application')

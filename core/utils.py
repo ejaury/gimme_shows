@@ -6,7 +6,7 @@ class Indexer:
   torrent_key = 'torrent_url'
 
   def __init__(self, log=None):
-    self.logger = Logger.get_logger(self.__class__.__name__)
+    self.logger = Logger.get_logger(get_fullname(self))
     self.log_file = log or getattr(settings, 'LATEST_DOWNLOADED_LOG_PATH')
     self.config = ConfigParser.ConfigParser()
     self.config.read(self.log_file)

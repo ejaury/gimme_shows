@@ -2,10 +2,10 @@
 LATEST_DOWNLOADED_LOG_PATH = 'logs/latest.log'
 
 # Root torrent directory 
-TORRENT_DIR = ''
+TORRENT_DIR = '/tmp/torrents'
 
 # Root save directory
-SAVE_DIR = '/home/edwin'
+SAVE_DIR = '/tmp'
 
 # Used if there are more than 2 torrents for 1 show episode 
 UPLOADER_PRIORITIES = (

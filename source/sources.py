@@ -1,5 +1,6 @@
 import re
 from source.base import BaseSourceFeed
+from core import utils
 from core.logger import Logger
 
 class EzrssFeed(BaseSourceFeed):
@@ -7,7 +8,7 @@ class EzrssFeed(BaseSourceFeed):
 
   def __init__(self, url=None):
     BaseSourceFeed.__init__(self, url)
-    self.logger = Logger.get_logger(self.__class__.__name__)
+    self.logger = Logger.get_logger(utils.get_fullname(self))
     self.logger.debug('Created an instance')
 
   def parse_name(self, raw_info):

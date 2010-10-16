@@ -1,7 +1,7 @@
 Instructions
 ============
 1. Add a link to each TV Show's RSS feed to a file called **rss_list** and save it to
-   ROOT_DIR (where start.py is), line by line
+   ROOT_DIR (where start.py is), one link per line
 2. Run 'start.py': *python start.py*
 
 3rd Party Libraries
