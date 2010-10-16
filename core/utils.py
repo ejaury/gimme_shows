@@ -36,3 +36,8 @@ class Indexer:
     self.logger.debug('Write changes to show log')
     self.config.write(open(self.log_file, 'w'))
 
+#
+# Get fully qualified name for an object (including module and class names)
+#
+def fullname(o):
+  return '%s.%s' % (o.__module__, o.__class__.__name__)
