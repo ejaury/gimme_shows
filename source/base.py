@@ -1,3 +1,5 @@
+from exceptions import NotImplementedError
+
 class BaseSourceFeed:
   def __init__(self, url=None):
     self.url = url
@@ -5,7 +7,7 @@ class BaseSourceFeed:
     self.season = ''
 
   def parse_name(self, raw_info):
-    pass
+    raise NotImplementedError
 
   def parse_season(self, raw_info):
-    pass
+    raise NotImplementedError
